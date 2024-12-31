@@ -16,6 +16,7 @@ const books = [
     authorId: 1,
   },
   {
+    id: 2,
     title: "Harry Potter",
     authorId: 2,
   },
