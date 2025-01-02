@@ -1,4 +1,3 @@
-const typeDefs = `
   type Book {
     id: Int
     title: String
@@ -20,7 +19,3 @@ const typeDefs = `
     deleteBook(id: Int): Book
     updateBook(id: Int, title: String, authorId: Int): Book
   }
-
-`;
-
-module.exports = { typeDefs };
