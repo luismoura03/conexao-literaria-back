@@ -1,4 +1,4 @@
-const authors = [
+/*const authors = [
   {
     id: 1,
     name: "J.R.R. Tolkien",
@@ -23,3 +23,4 @@ const books = [
 ];
 
 module.exports = { authors, books };
+*/

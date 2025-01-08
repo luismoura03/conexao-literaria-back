@@ -1,7 +1,7 @@
-const { books } = require("../../../lib");
+const db = require("../../../src/db");
 
 module.exports = {
-  books() {
-    return books;
+  books: async () => {
+    return await db("books");
   },
 };
