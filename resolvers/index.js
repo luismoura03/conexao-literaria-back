@@ -1,10 +1,11 @@
-const { authors } = require("../lib");
+//const { authors } = require("../lib");
 const { book, books } = require("./books/query");
 const {
   createBook,
   deleteBook,
   updateBook,
 } = require("./books/mutation/index");
+const db = require("../src/db");
 
 const resolvers = {
   Query: {
@@ -13,8 +14,9 @@ const resolvers = {
   },
 
   Book: {
-    author: (parent) => {
-      return authors.find((author) => author.id === parent.authorId);
+    author: async (parent, args, context) => {
+      const author = await db("authors").where("id", parent.author_id).first();
+      return author;
     },
   },
 

@@ -1,21 +1,16 @@
-// Update with your config settings.
-
-/**
- * @type { Object.<string, import("knex").Knex.Config> }
- */
 module.exports = {
   client: "pg",
   connection: {
-    database: "postgresql",
-    user: "postgres",
-    password: "docker",
-  },
-  pool: {
-    min: 2,
-    max: 10,
+    host: "localhost",
+    port: 5431,
+    user: "root",
+    password: "password",
+    database: "postgres-initial",
   },
   migrations: {
-    tableName: "knex_migrations",
-    directory: "./",
+    directory: "./src/migrations",
+  },
+  seeds: {
+    directory: "./seeds",
   },
 };

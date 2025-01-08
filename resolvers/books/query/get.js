@@ -1,11 +1,12 @@
-const { books } = require("../../../lib");
+const db = require("../../../src/db/index");
 
 module.exports = {
-  book(_, { id }) {
-    const getBook = books.find((book) => book.id === id);
-    if (!getBook) {
-      throw new Error("Book not found");
-    }
-    return getBook;
+  book: async (_, { id }) => {
+    const book = await db("books as b")
+      .join("authors as a", "b.author_id", "a.id")
+      .where("b.id", id)
+      .select("b.id", "b.title", "b.author_id", "a.name as author_name")
+      .first();
+    return book;
   },
 };
