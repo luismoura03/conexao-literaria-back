@@ -1,18 +1,21 @@
-const { books } = require("../../../lib");
-const { authors } = require("../../../lib");
-
 module.exports = {
-  updateBook: (_, { id, title, authorId }) => {
-    const bookIndex = books.findIndex((book) => book.id === book.id);
-    if (bookIndex === -1) {
+  updateBook: async (_, { id, title, authorId }, { db }) => {
+    const foundAuthor = await db("authors").where({ id: authorId }).first();
+    if (!foundAuthor) {
+      throw new Error("Author not found");
+    }
+
+    const foundBook = await db("books").where({ id }).first();
+    if (!foundBook) {
       throw new Error("Book not found");
     }
-    console.log(bookIndex);
-    const [updatedBook] = books.splice(bookIndex, 1, {
-      ...books[bookIndex],
-      title,
-      authorId,
-    });
+    const [updatedBook] = await db("books").where({ id }).update(
+      {
+        title,
+        author_id: authorId,
+      },
+      ["id", "title", "author_id as authorId"]
+    );
     return updatedBook;
   },
 };

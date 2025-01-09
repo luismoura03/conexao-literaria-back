@@ -1,11 +1,9 @@
-//const { authors } = require("../lib");
 const { book, books } = require("./books/query");
 const {
   createBook,
   deleteBook,
   updateBook,
 } = require("./books/mutation/index");
-const db = require("../src/db");
 
 const resolvers = {
   Query: {
@@ -14,8 +12,9 @@ const resolvers = {
   },
 
   Book: {
-    author: async (parent, args, context) => {
-      const author = await db("authors").where("id", parent.author_id).first();
+    author: async (parent, args, { db }) => {
+      const author = await db("authors").where("id", parent.authorId).first();
+      console.log(author);
       return author;
     },
   },

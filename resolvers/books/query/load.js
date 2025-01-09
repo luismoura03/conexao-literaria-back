@@ -1,7 +1,10 @@
-const db = require("../../../src/db");
-
 module.exports = {
-  books: async () => {
-    return await db("books");
+  books: async (_, __, { db }) => {
+    const books = await db("books").select(
+      "id",
+      "title",
+      "author_id as authorId"
+    );
+    return books;
   },
 };

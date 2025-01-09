@@ -15,7 +15,7 @@
   }
 
   type Mutation {
-    createBook(title: String, authorId: Int): Book
-    deleteBook(id: Int!): Book
-    updateBook(id: Int, title: String, authorId: Int): Book
+    createBook(title: String!, authorId: ID!): Book
+    deleteBook(id: ID!): Book
+    updateBook(id: ID!, title: String!, authorId: ID!): Book
   }
