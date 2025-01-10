@@ -1,21 +1,29 @@
   type Book {
-    id: Int
-    title: String
-    author: Author
+    id: ID!
+    title: String!
+    author: Author!
   }
 
   type Author {
-    id: Int
-    name: String
+    id: ID!
+    name: String!
   }
   
    type Query {
-    books: [Book]
-    book(id: Int): Book
+    books: [Book!]!
+    book(id: ID!): Book!
+
+    authors: [Author!]!
+    author(id: ID!): Author!
   }
 
   type Mutation {
-    createBook(title: String, authorId: Int): Book
-    deleteBook(id: Int): Book
-    updateBook(id: Int, title: String, authorId: Int): Book
+    createBook(title: String!, authorId: ID!): Book!
+    deleteBook(id: ID!): Book!
+    updateBook(id: ID!, title: String!, authorId: ID!): Book!
+    
+    createAuthor(name: String!): Author!
+    updateAuthor(id: ID!, name: String!): Author!
+    deleteAuthor(id: ID!): Author!
+
   }
