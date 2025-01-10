@@ -4,17 +4,24 @@ const {
   deleteBook,
   updateBook,
 } = require("./books/mutation/index");
+const {
+  createAuthor,
+  deleteAuthor,
+  updateAuthor,
+} = require("./authors/mutation/index");
+const { authors, author } = require("./authors/query");
 
 const resolvers = {
   Query: {
     books,
     book,
+    authors,
+    author,
   },
 
   Book: {
-    author: async (parent, args, { db }) => {
+    author: async (parent, __, { db }) => {
       const author = await db("authors").where("id", parent.authorId).first();
-      console.log(author);
       return author;
     },
   },
@@ -23,6 +30,9 @@ const resolvers = {
     createBook,
     deleteBook,
     updateBook,
+    createAuthor,
+    deleteAuthor,
+    updateAuthor,
   },
 };
 module.exports = { resolvers };

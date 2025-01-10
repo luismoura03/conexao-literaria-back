@@ -7,7 +7,6 @@ module.exports = {
     if (!book) {
       throw new Error(`Book not found: ID ${id}`);
     }
-    console.log(book);
     return book;
   },
 };
