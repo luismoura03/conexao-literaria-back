@@ -1,3 +1,5 @@
+  scalar NonEmptyString
+  
   type Book {
     id: ID!
     title: String!
@@ -18,12 +20,12 @@
   }
 
   type Mutation {
-    createBook(title: String!, authorId: ID!): Book!
+    createBook(title: NonEmptyString!, authorId: ID!): Book!
     deleteBook(id: ID!): Book!
-    updateBook(id: ID!, title: String!, authorId: ID!): Book!
+    updateBook(id: ID!, title: NonEmptyString!, authorId: ID!): Book!
     
-    createAuthor(name: String!): Author!
-    updateAuthor(id: ID!, name: String!): Author!
+    createAuthor(name: NonEmptyString!): Author!
+    updateAuthor(id: ID!, name: NonEmptyString!): Author!
     deleteAuthor(id: ID!): Author!
 
   }
