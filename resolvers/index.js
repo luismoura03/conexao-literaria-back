@@ -1,3 +1,4 @@
+const { NonEmptyStringResolver } = require("graphql-scalars");
 const { book, books } = require("./books/query");
 const {
   createBook,
@@ -12,6 +13,8 @@ const {
 const { authors, author } = require("./authors/query");
 
 const resolvers = {
+  NonEmptyString: NonEmptyStringResolver,
+
   Query: {
     books,
     book,
