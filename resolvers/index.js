@@ -23,10 +23,18 @@ const resolvers = {
   },
 
   Book: {
-    author: async (parent, __, { db }) => {
+    author: async (parent, args, { db }) => {
       const author = await db("authors").where("id", parent.authorId).first();
       return author;
     },
+  },
+
+  Author: {
+    books: async (parent, args, { db }) => {
+      console.log(parent)
+      const books = await db("books").where("author_id", parent.id);
+      return books;
+    }
   },
 
   Mutation: {
