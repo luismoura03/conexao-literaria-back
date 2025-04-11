@@ -38,6 +38,10 @@ docker compose up -d
 
 knex migrate:latest
 
-4️⃣ Rode o servidor em modo desenvolvimento
+4️⃣ Execute as seeds
+
+knex seed:run
+
+5️⃣ Rode o servidor em modo desenvolvimento
 
 npm run dev
